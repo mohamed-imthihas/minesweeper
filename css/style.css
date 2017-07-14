@@ -1,0 +1,77 @@
+.container{
+	text-align: center;
+	font-family: monospace;
+    font-size: 14px;
+}
+button{
+	background-size: contain;
+	vertical-align: middle;
+}
+.game-container{
+	display: inline-block;
+}
+.single-row{
+	height: 25px;
+}
+.single-row button{
+	background-image: url("../images/close.png");
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+
+}
+.header{
+
+}
+.sub-header-1{
+	position: relative;
+	height: 35px;
+}
+.sub-header-2{
+	position: relative;
+	height: 40px;
+}
+.rem-mines,.high-score{
+	position: absolute;
+	left: 0px;
+}
+.rem-mines span,.time span{
+	width: 100%;
+	display: inline-block;
+}
+.reset-button{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.reset-button #reset{
+	width: 30px;
+	height: 30px;
+}
+.options,.time{
+	position: absolute;
+	right: 0px;
+}
+.level-selector-holder{
+	position: relative;
+	display: inline-block;
+}
+.level-selector-holder button{
+	width: 30px;
+	height: 30px;
+	background-image: url("../images/settings.png")
+}
+.level-selector{
+	background-color: white;
+	position: absolute;
+	text-align: left;
+	width: 120px;
+	padding:10px;
+	box-shadow: 1px 1px 1px 1px #eee;
+	top:90%;
+	border: 2px solid #bdbdbd;
+}
+.level-selector ul{
+	list-style: none;
+	padding-left: 0px;
+}
