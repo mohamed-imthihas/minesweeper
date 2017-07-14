@@ -13,6 +13,7 @@ var time = "00:00:00";
 var timer = null;
 var highScore = null;
 var mode = "beginner";
+var hasEnded = false;
 var generateGrid = function(){
 	var gameArea = $('.gamearea');
 	if(noOfCols*25 < 375)
@@ -37,6 +38,9 @@ var generateGrid = function(){
 	}
 }
 var clickFunction = function(){
+	if(hasEnded){
+		return;
+	}
 	var clickedX = $(this).data('x');
 	var clickedY = $(this).data('y');
 	if(isAlready(clickedX,clickedY,flaggedCell) || isAlready(clickedX,clickedY,openedCell)){
@@ -72,7 +76,8 @@ var win = function(){
 	timer=null;
 	$("#reset").css("background-image","url(./images/solved.png)");
 	$("#remMine").text("0")
-	isHighScore();
+	setHighScore();
+	hasEnded = true;
 }
 var openCells = function(x,y){
 	if(x<0 || y<0 || x>noOfRows-1 || y>noOfCols-1){
@@ -103,10 +108,14 @@ var gameOver = function(){
 	}
 	clearInterval(timer);
 	timer=null;
-	$("#reset").css("background-image","url(./images/sad.png)")
+	$("#reset").css("background-image","url(./images/sad.png)");
+	hasEnded=true;
 }
 var rightClick = function(e){
 	e.preventDefault();
+	if(hasEnded){
+		return;
+	}
 	var clickedX = $(this).data('x');
 	var clickedY = $(this).data('y');
 	if(isAlready(clickedX,clickedY,openedCell)){
@@ -121,6 +130,7 @@ var rightClick = function(e){
 		removeEntry(clickedX,clickedY,flaggedCell);
 		questionedCell.push([clickedX,clickedY]);
 		buttons[clickedX][clickedY].css("background-image","url(./images/question.png)");
+		$("#remMine").text(noOfMines - flaggedCell.length);
 		return;
 	}
 	flaggedCell.push([clickedX,clickedY]);
@@ -181,9 +191,6 @@ var calculateNumberOnCell = function(){
 		array[i]=new Array(noOfCols);
 		for(var j=0;j<noOfCols;j++){
 			array[i][j]=calculateNumberOfMine(i,j);
-			if(array[i][j]>3){
-				console.log(array[i][j]);
-			}
 		}
 	}
 	contentInCell = array;
@@ -229,6 +236,7 @@ var init = function(){
 	flaggedCell = [];
 	questionedCell=[];
 	selectedCell = [];
+	hasEnded = false;
 	if(timer != null){
 		clearInterval(timer);
 	}
@@ -259,9 +267,23 @@ var twoDigitMaker = function(num){
 	return num.toString().length>1 ? num : "0"+num;
 }
 var isHighScore = function(){
+	debugger;
 	var thighScore = highScore[mode];
-	if(thighScore[0]<time[0] || thighScore[1]<time[1] || thighScore[2]<time[2]){
-		return false;
+	if(thighScore[0]>time[0]){
+		return true;
+	}
+	if(thighScore[1]>time[1]){
+		return true;
+	}
+	if(thighScore[2]>time[2]){
+		return true;
+	}
+	return false;
+	
+}
+var setHighScore = function(){
+	if(!isHighScore()){
+		return;
 	}
 	highScore[mode]=time;
 	$("#highScore").text(renderTimer(highScore[mode]));
@@ -270,11 +292,30 @@ var isHighScore = function(){
 var fetchHighScore = function(){
 	highScore = JSON.parse(localStorage.getItem("mineSweeper_highScore"));
 	if(highScore == undefined){
-		highScore = {"beginner":[0,0,0],"intermediate":[0,0,0],"expert":[0,0,0]};
+		highScore = {"beginner":[99,0,0],"intermediate":[99,0,0],"expert":[99,0,0]};
 	}
 }
 var saveHighScore = function(){
 	localStorage.setItem("mineSweeper_highScore",JSON.stringify(highScore));
+}
+var changeMode = function(){
+	mode = $("input[name='level']:checked").val();
+	if(mode == "beginner"){
+		noOfRows = 10;
+		noOfCols = 10;
+		noOfMines = 10;
+	}
+	else if(mode == "intermediate"){
+		noOfRows = 15;
+		noOfCols = 15;
+		noOfMines = 49;
+	}
+	else{
+		noOfRows = 20;
+		noOfCols = 20;
+		noOfMines = 99;	
+	}
+	reset();
 }
 var reset = function(){
 	init();
@@ -285,4 +326,6 @@ $(document).ready(function(){
 	init();
 	generateGrid();
 	$("#reset").click(reset);
+	$("input[name='level']").change(changeMode);
+	$(window).unload(saveHighScore);
 });
