@@ -1,77 +1,96 @@
-.container{
-	text-align: center;
-	font-family: monospace;
+.container {
+    text-align: center;
+    font-family: monospace;
     font-size: 14px;
 }
-button{
-	background-size: contain;
-	vertical-align: middle;
-}
-.game-container{
-	display: inline-block;
-}
-.single-row{
-	height: 25px;
-}
-.single-row button{
-	background-image: url("../images/close.png");
-	display: inline-block;
-	width: 25px;
-	height: 25px;
 
+button {
+    background-size: contain;
+    vertical-align: middle;
 }
-.header{
 
+.game-container {
+    display: inline-block;
 }
-.sub-header-1{
-	position: relative;
-	height: 35px;
+
+.single-row {
+    height: 25px;
 }
-.sub-header-2{
-	position: relative;
-	height: 40px;
+
+.single-row button {
+    background-image: url("../images/close.png");
+    display: inline-block;
+    width: 25px;
+    height: 25px;
 }
-.rem-mines,.high-score{
-	position: absolute;
-	left: 0px;
+
+.sub-header-1 {
+    height: 35px;
 }
-.rem-mines span,.time span{
-	width: 100%;
-	display: inline-block;
+
+.sub-header-2 {
+    height: 40px;
 }
-.reset-button{
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
+
+.rem-mines,
+.high-score {
+    float: left;
 }
-.reset-button #reset{
-	width: 30px;
-	height: 30px;
+
+.rem-mines span,
+.time span {
+    width: 100%;
+    display: inline-block;
 }
-.options,.time{
-	position: absolute;
-	right: 0px;
+
+.reset-button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
-.level-selector-holder{
-	position: relative;
-	display: inline-block;
+
+.reset-button #reset {
+    width: 30px;
+    height: 30px;
 }
-.level-selector-holder button{
-	width: 30px;
-	height: 30px;
-	background-image: url("../images/settings.png")
+
+.options,
+.time {
+    float: right;
 }
-.level-selector{
-	background-color: white;
-	position: absolute;
-	text-align: left;
-	width: 120px;
-	padding:10px;
-	box-shadow: 1px 1px 1px 1px #eee;
-	top:90%;
-	border: 2px solid #bdbdbd;
+
+.level-selector-holder {
+    position: relative;
+    display: inline-block;
 }
-.level-selector ul{
-	list-style: none;
-	padding-left: 0px;
+
+.level-selector-holder button {
+    width: 30px;
+    height: 30px;
+    background-image: url("../images/settings.png")
+}
+
+.level-selector {
+    background-color: white;
+    position: absolute;
+    text-align: left;
+    width: 120px;
+    padding: 10px;
+    box-shadow: 1px 1px 1px 1px #eee;
+    top: 90%;
+    border: 2px solid #bdbdbd;
+    display: none;
+}
+
+.level-selector ul {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.level-selector-holder:hover .level-selector {
+    display: block;
+}
+
+#level-name {
+    text-transform: capitalize;
 }
