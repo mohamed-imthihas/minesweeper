@@ -1,53 +1,56 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title></title>
-		<link rel="stylesheet" type="text/css" href="./css/style.css">
-	</head>
-	<body>
-		<div class="container">
-			<div class="game-container">
-				<div class="header">
-					<div class="sub-header-1">
-						<div class="high-score">
-							<span>Best time :</span>
-							<span id="highScore"> 12:00</span>
-						</div>
-						<div class="options">
-							<span>Beginner</span>
-							<div class="level-selector-holder">
-								<button></button>
-								<div class="level-selector">
-									<span>Level</span>
-									<ul>
-										<li><input type="radio" name="level" value="beginner" checked>Beginner</li>
-										<li><input type="radio" name="level" value="intermediate">Intermediate</li>
-										<li><input type="radio" name="level" value="expert">Expert</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="sub-header-2">
-						<div class="rem-mines">
-							<span>Remaining Mines</span>
-							<span id="remMine">99</span>
-						</div>
-						<div class="reset-button">
-							<button id="reset"></button>
-						</div>
-						<div class="time">
-							<span>Time Taken</span>
-							<span id="timeTaken">12:00:00</span>
-						</div>
-					</div>
-				</div>
-				<div class="gamearea">
-					
-				</div>
-			</div>
-		</div>
-		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<script type="text/javascript" src="./js/script.js"></script>
-	</body>
+
+<head>
+    <title>Minesweeper</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="game-container">
+            <div class="header">
+                <div class="sub-header-1">
+                    <div class="high-score">
+                        <span>Best time :</span>
+                        <span id="highScore"> 12:00</span>
+                    </div>
+                    <div class="options">
+                        <span id="level-name">Beginner</span>
+                        <div class="level-selector-holder">
+                            <button></button>
+                            <div class="level-selector">
+                                <span>Level</span>
+                                <ul>
+                                    <li><input type="radio" name="level" value="beginner" checked>Beginner</li>
+                                    <li><input type="radio" name="level" value="intermediate">Intermediate</li>
+                                    <li><input type="radio" name="level" value="expert">Expert</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sub-header-2">
+                    <div class="rem-mines">
+                        <span>Remaining Mines</span>
+                        <span id="remMine">99</span>
+                    </div>
+                    <div class="reset-button">
+                        <button id="reset"></button>
+                    </div>
+                    <div class="time">
+                        <span>Time Taken</span>
+                        <span id="timeTaken">12:00:00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gamearea">
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/script.js"></script>
+</body>
+
 </html>
